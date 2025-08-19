@@ -1,0 +1,13 @@
+{
+  "node_env": "NODE_ENV",
+  "base_url": "BASE_URL",
+  "port": "PORT",
+  "db": {
+    "url": "DB_URL"
+  },
+  "email": {
+    "user": "EMAIL_USER",
+    "password": "EMAIL_PASSWORD"
+  },
+  "jwt_secret": "JWT_SECRET"
+}
