@@ -5,6 +5,8 @@ const {
   makeRateLimiter,
 } = require("../middlewares/rate-limiter.middleware.js");
 
+const { authenticatedMiddleware } = require("../middlewares");
+
 // Setup rater Limit
 const RATE_LIMIT_TIME_WINDOW = 1;
 const MAX_TENTATIVES_IN_TIME_WINDOW = 50;
@@ -25,5 +27,8 @@ AuthRouter.post(
   "/email-validation/confirm",
   AuthController.confirmEmailValidation
 );
+
+// Logout
+AuthRouter.post("/logout", authenticatedMiddleware, AuthController.logout);
 
 module.exports = AuthRouter;

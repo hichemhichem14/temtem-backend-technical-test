@@ -90,7 +90,7 @@ module.exports.confirmEmailValidation = asyncErrorWrapper(
 );
 
 module.exports.logout = asyncErrorWrapper(async (req, res, _next) => {
-  let user = await res.locals.user;
+  const user = await res.locals.user;
 
   user.last_logout_time = new Date();
 

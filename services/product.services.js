@@ -110,13 +110,12 @@ class ProductServices {
     );
 
     if (!fs.existsSync(filePath)) {
-      return new CodedError(
+      throw new CodedError(
         "product.image-file-not-found",
         "Product's image file not found",
         404
       );
     }
-
     return filePath;
   }
 }
