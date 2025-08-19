@@ -10,7 +10,7 @@ A simple **Node.js + Express + MongoDB** backend for a product store with **role
 
 ```bash
 git clone https://github.com/your-username/temtem-backend.git
-cd temtem-backend
+cd temtem-backend-technical-test
 ```
 
 ### 2️⃣ Install Dependencies
@@ -58,12 +58,11 @@ URL: http://localhost:4000/api/auth//signup
 ```json
 {
   "email": "guset@gamil.com",
-  "password": "Sliamne13*",
+  "password": "Sliamne13*"
 }
 ```
-After registration, the user receives an email with a link to verify their address. This link carries a unique validation token to confirm their email.
----
 
+## After registration, the user receives an email with a link to verify their address. This link carries a unique validation token to confirm their email.
 
 ## – Validate User Email
 
@@ -79,10 +78,10 @@ URL: http://localhost:4000/api/auth/email-validation/confirm
   "token"
 }
 ```
+
 - Copy the **token** from the response (you can need it for next steps)
 
 ---
-
 
 ## – Login to Get Token
 
@@ -99,6 +98,7 @@ URL: http://localhost:4000/api/auth/login
   "password": "ps^pkp*33EE"
 }
 ```
+
 - Copy the **token** from the response (you can need it for next steps)
 
 ---
@@ -109,18 +109,19 @@ URL: http://localhost:4000/api/auth/login
 Method: POST
 URL: http://localhost:4000/api/products
 ```
+
 Only store owner can add product
 
 - Headers → `Authorization: Bearer YOUR_TOKEN_HERE`
 - Body → `form-data`
 
-| Key         | Value          | Type |
-|-------------|---------------|------|
-| name        | Test Product   | Text |
-| description | Some text      | Text |
-| price       | 19.99          | Text |
-| category    | shoes          | Text |
-| image       | (choose file)  | File |
+| Key         | Value         | Type |
+| ----------- | ------------- | ---- |
+| name        | Test Product  | Text |
+| description | Some text     | Text |
+| price       | 19.99         | Text |
+| category    | shoes         | Text |
+| image       | (choose file) | File |
 
 Response:
 
@@ -141,6 +142,7 @@ Response:
 Method: GET
 URL : http://localhost:4000/api/products
 ```
+
 Both store owner and guest users can fetch products
 
 - Headers → `Authorization: Bearer YOUR_TOKEN_HERE`
@@ -158,6 +160,7 @@ GET /api/products
 GET /api/products?category=shoes
 GET /api/products?category=shoes&order_by=price&order=desc
 ```
+
 ---
 
 ## – Update a Product
@@ -166,6 +169,7 @@ GET /api/products?category=shoes&order_by=price&order=desc
 Method: PUT
 URL: http://localhost:4000/api/products/:productId
 ```
+
 Only store owner can update product
 
 - Headers → `Authorization: Bearer YOUR_TOKEN_HERE`
@@ -181,6 +185,7 @@ Only store owner can update product
 Method: DELETE
 URL: http://localhost:3000/api/products/:productId
 ```
+
 Only store owner can add product
 
 - Headers → `Authorization: Bearer YOUR_TOKEN_HERE`
@@ -192,6 +197,7 @@ Deletes product and its image.
 ## – View Product Image (Public)
 
 Images are served via a route, not direct file access
+
 ```
 Method: GET
 URL: http://localhost:3000/api/products/images/fileName
@@ -204,12 +210,12 @@ Copy the filename from `imageUrl` when creating/fetching a product.
 
 ## 🔐 ACCESS CONTROL
 
-| Route                  | Guest | Store Owner |
-|-------------------------|:-----:|:-----------:|
-| Register / Login        |  ✅   | ❌        |
-| Get All Products        |  ✅   | ✅          |
-| Create / Update / Delete|  ❌   | ✅          |
-| Access Image URLs       |  ✅   | ✅          |
+| Route                    | Guest | Store Owner |
+| ------------------------ | :---: | :---------: |
+| Register / Login         |  ✅   |     ❌      |
+| Get All Products         |  ✅   |     ✅      |
+| Create / Update / Delete |  ❌   |     ✅      |
+| Access Image URLs        |  ✅   |     ✅      |
 
 ---
 
